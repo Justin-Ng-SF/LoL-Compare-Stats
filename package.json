@@ -1,0 +1,28 @@
+{
+  "name": "lol-compare-stats",
+  "version": "1.0.0",
+  "description": "League of Legends application that uses the riot api to use player info and make comparisons to see who will more likely win",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jstazn/LoL-Compare-Stats.git"
+  },
+  "author": "Anthony Chian and Justin Ng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jstazn/LoL-Compare-Stats/issues"
+  },
+  "homepage": "https://github.com/jstazn/LoL-Compare-Stats#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.2",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.11",
+    "request": "^2.88.2"
+  }
+}
