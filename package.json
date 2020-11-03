@@ -4,8 +4,8 @@
   "description": "League of Legends application that uses the riot api to use player info and make comparisons to see who will more likely win",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server",
+    "server": "nodemon server"
   },
   "repository": {
     "type": "git",
