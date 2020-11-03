@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const config = require('config');
 
-const api = 'RGAPI-270ebe50-f897-49ff-b09b-37703d574a25';
+
+const api = config.get('riotapi');
+
 const championListURL = 'http://ddragon.leagueoflegends.com/cdn/10.22.1/data/en_US/champion.json';
 
 

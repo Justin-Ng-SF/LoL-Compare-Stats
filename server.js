@@ -1,14 +1,18 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const path = require('path');//core nodejs module to manipulate paths
-
+const axios = require("axios");
 const app = express();
+
+const config = require('config');
+const api = config.get('riotapi');
+
 
 //connect to mongodb database
 connectDB();
 
-const url = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/Doublelift?api_key=RGAPI-270ebe50-f897-49ff-b09b-37703d574a25';
-const axios = require("axios");
+const url = `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/Doublelift?api_key=${api}`;
+
 
 // app.get('/', (req, res) => res.send(
 //     axios.get(url).then(res => {
