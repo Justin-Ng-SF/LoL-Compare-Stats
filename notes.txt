@@ -1,2 +1,4 @@
 npm i express bcryptjs config mongoose request jsonwebtoken
 npm i -D nodemon concurrently
+
+npm run server
