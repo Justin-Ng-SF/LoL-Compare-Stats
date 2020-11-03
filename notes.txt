@@ -2,6 +2,7 @@ npm i express bcryptjs config mongoose request jsonwebtoken
 npm i -D nodemon concurrently
 
 create a file in /config named riotapi.json with a json of your api
+will need to remove from .gitignore when deploying
 example: 
 {
     "api": "12345-67890-11121314-15161718"
