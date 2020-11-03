@@ -5,13 +5,13 @@ const axios = require("axios");
 const app = express();
 
 const config = require('config');
-const api = config.get('riotapi');
+//const api = config.get('riotapi');
 
 
 //connect to mongodb database
 connectDB();
 
-const url = `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/Doublelift?api_key=${api}`;
+//const url = `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/Doublelift?api_key=${api}`;
 
 
 // app.get('/', (req, res) => res.send(
@@ -19,6 +19,10 @@ const url = `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/Dou
 //         console.log('data: ', res.data)
 //     })    
 // ));
+
+//app.get('/me', (req, res) => res.send('test'))
+
+app.use('/api/champions', require('./routes/api/champions.js'));
 
 const PORT = process.env.PORT || 5000;
 

@@ -3,11 +3,8 @@ const router = express.Router();
 const config = require('config');
 
 
-const api = config.get('riotapi');
-
-const championListURL = 'http://ddragon.leagueoflegends.com/cdn/10.22.1/data/en_US/champion.json';
+//const api = config.get('riotapi');
 
 
-router.get(championListURL, (req, res) => res.send('Player route'));
 
 module.exports = router;
