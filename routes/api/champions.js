@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
     const listOfChampions = [];
     for (var key in championInfo) {
       listOfChampions.push(key);
-  }
+    }
 
     res.send(listOfChampions);
   } catch (err) {
