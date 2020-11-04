@@ -1,11 +1,19 @@
 npm i express bcryptjs config mongoose request jsonwebtoken
 npm i -D nodemon concurrently
 
-create a file in /config named riotapi.json with a json of your api
+in /client
+npm i axios react-router-dom redux react-redux redux-thunk moment react-moment
+
+in /config 
+create a file named riotapi.json with a json of your api
 will need to remove from .gitignore when deploying
 example: 
 {
     "api": "12345-67890-11121314-15161718"
 }
 
+to run server, use
 npm run server
+
+to run server and client at the same time, use
+npm run dev
