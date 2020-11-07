@@ -1,80 +1,55 @@
-// const express = require('express');
-// const router = express.Router();
-
-
-// const api = require('../../config/riotapi.json').api;
-
-
-
-// module.exports = router;
-
-
-
-
-// Axios.defaults.timeout = 5000;
-let api_key = 'RGAPI-b55d5a7f-a3b9-41db-8a53-0cfc74b028b1'
-//u = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/Skyzrice?api_key=RGAPI-b55d5a7f-a3b9-41db-8a53-0cfc74b028b1'
-//var accId = 'HUsky1p1WYT4Cd6Xv5Aj12A0enNi0pGlipLnoOJA_lfalQ'
-//let champion = '64'
-
-
 const { default: Axios } = require("axios")
 
-function summonerSearch(url) {
-    let summonerPromise = 
-        Axios
-            .get(url)
-            .catch((error) => console.log(error));
-    Promise
-        .all([summonerPromise])
-        .then((responses) => {
-            let summonerResponse = responses[0];
-            if (summonerResponse.status == 200) {
-                handleSummonerFound(summonerResponse.data.summonerLevel, 
-                    summonerResponse.data.id)
-            }
-            else {
-                console.log(error)
-            }
+let api_key = 'RGAPI-b55d5a7f-a3b9-41db-8a53-0cfc74b028b1'
+let name = 'LogicXD'
+//let accID = 'HUsky1p1WYT4Cd6Xv5Aj12A0enNi0pGlipLnoOJA_lfalQ'
+
+test()
+
+async function test() {
+    var sumURL = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + name +
+    '?api_key=' + api_key
+    //var matchURL = 'https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/'
+
+    // var leagueURL = 'https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/bwZASB8bJ6iQlskzEFZxsu3sBv-_cNV5pcsp8JupJ1j23KY?api_key=RGAPI-b55d5a7f-a3b9-41db-8a53-0cfc74b028b1'
+
+    let summoner = await new Promise((resolve, reject) => {
+        Axios.get(sumURL).then(res => {
+            resolve(res.data)
         })
-}
-
-function handleSummonerFound(level, id) {
-    document.body.innerHTML = 'level:' + level + '\n id' + id
-}
-
-function handlePromise() {
-    Promise
-        .all(getAccountId())
-        .then(response => {
-            let accountId = response
-            console.log(accountId)
-        })
-}
-
-// this function returns => Encrypted account ID. Max length 56 characters.
-function getAccountId() {
-    var url = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'
-    var name = 'Skyzrice'
-    var newURL = url + name + '?api_key=' + api_key
-    Axios.get(newURL).then(res => {
-        return res.data.accountId
-    })
-}
-
-// this function returns => List[MatchReferenceDto]	
-function getMatchList() {
-    var url = 'https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/'
-    var newURL = url + accID + '?champion='+ champion + '&api_key=' + api_key
-    Axios.get(newURL)
-    .then(res => {
-        res.data.matches.forEach(match => console.log(match.gameId))
     })
     
-}
+    var leagueURL = 'https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + summoner.id + '?api_key=' + api_key
 
+    let league = await new Promise((resolve, reject) => {
+        Axios.get(leagueURL).then(res => {
+            resolve(res.data)
+        })
+    })
 
-// returns information from MatchDto
-function getInfoFromMatch(name, match) {
+    let sumId = summoner.id
+    let accId = summoner.accountId
+    let sumLvl = summoner.summonerLevel
+    let rankedFlex = league[0]
+    let rankedSolo = league[1]
+    let flexTier = rankedFlex.tier
+    let flexRank = rankedFlex.rank
+    let soloTier = rankedSolo.tier
+    let soloRank = rankedSolo.rank
+    let flexWins = rankedFlex.wins
+    let flexLosses =rankedFlex.losses
+    let soloWins = rankedSolo.wins
+    let soloLosses = rankedSolo.losses
 
+    console.log('SUMMONER INFO FOR ' + name + ":\n")
+    console.log('Summoner Id: ' + sumId)
+    console.log('Summoner Level: ' + sumLvl)
+    console.log('Account Id: ' + accId)
+    console.log('Ranked Flex: ' + flexTier + " " + flexRank)
+    console.log('Ranked Solo: ' + soloTier + " " + soloRank)
+    console.log('Wins (Flex): ' + flexWins)
+    console.log('Losses (Flex): ' + flexLosses)
+    console.log('Wins (Solo): ' + soloWins)
+    console.log('Losses (Solo): ' + soloLosses)
+    
 }
