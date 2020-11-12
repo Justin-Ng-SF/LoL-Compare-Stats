@@ -21,8 +21,8 @@ export const getChampions = () => async dispatch => {
     
         const listOfChampions = [];
         for (var champion in championInfo) {
-          listOfChampions.push(champion)
-          //listOfChampions.push({ [champion]: championInfo[champion].key});
+          //listOfChampions.push(champion)
+          listOfChampions.push({ [champion]: championInfo[champion].key});
         }
     
         // console.log(typeof listOfChampions)
@@ -36,7 +36,7 @@ export const getChampions = () => async dispatch => {
         // return res.status(404).json({ msg: 'error 404' });
         dispatch({
             type: ERROR,
-            payload: { msg: error.response.statusText, status: error.response.status }
+            payload: { msg: error.message }
         });
       }
 

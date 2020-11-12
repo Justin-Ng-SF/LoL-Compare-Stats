@@ -10,12 +10,12 @@ const initialState = {
 };
 
 export default function championReducer(state = initialState, action) {
-    console.log('action: ', action)
+    //console.log('action: ', action)
     const { type, payload } = action;
     
     switch (type) {
         case GET_CHAMPIONS:
-            console.log('GET_CHAMPIONS HIT')
+            //console.log('GET_CHAMPIONS HIT')
             return {
                 ...state,
                 champions: payload,

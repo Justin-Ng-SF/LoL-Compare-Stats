@@ -7,22 +7,61 @@ import './dropdown.css';
 
 
 
-const Home = ({ getChampions, champions: { champions, loading }}) => {
+const Home = ({ getChampions, champions: { champions, loading } }) => {
   useEffect(() => {
     //getPost(match.params.id);
     getChampions();
-    console.log(10, champions, loading)
-}, [getChampions]);
+  }, [getChampions]);
+
+  var champlist = [];
+  if (champions.length > 0) {
+    for (var i = 0; i < champions.length; i++) {
+      //var a = <option value={champions[i]}>{champions[i]}</option>;
+      //var a = champions[i];
+
+      //values is the unique id# of champion taken from riots api
+      champlist.push({
+        "id": Object.values(champions[i]),
+        "champion": Object.keys(champions[i])
+      });
+    }
+  }
+  //if(champions)
+  //console.log(Object.keys(champions[1]))
+
+
+  // ({ [champion]: championInfo[champion].key})
+
+  function getChampId() {
+    var champId = document.getElementById("mySelect")?.value;
+    console.log('champion id: ', champId)
+    return champId
+  }
+
 
   return (
 
+    <div>
+      <div>
+        Pick a Champion
+      </div>
 
-      <div className="dropdown">
-      <button className="dropbtn">Dropdown</button>
+      <select id="mySelect" size="1" >
+        {/* <option>-- Champion --</option> */}
+        {/*champlist = <option value={champions[i]}>{champions[i]}</option> */}
+        {
+          
+          //champlist.map(champ => <option>{champ.champion}</option>)
+          champlist.map(champ => <option value={champ.id}>{champ.champion}</option>)
+          // Object.values(champlist)
+        }
+      </select>
 
-        <div className="dropdown-content">
-        {champions}
-        </div>
+      {<button onClick={getChampId}>
+        click
+      </button>}
+
+
 
     </div>
     
