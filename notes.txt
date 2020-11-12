@@ -4,6 +4,7 @@ npm i -D nodemon concurrently
 in /client
 npm i axios react-router-dom redux react-redux redux-thunk moment react-moment
 
+
 in /config 
 create a file named riotapi.json with a json of your api
 will need to remove from .gitignore when deploying
@@ -15,5 +16,14 @@ example:
 to run server, use
 npm run server
 
+
 to run server and client at the same time, use
 npm run dev
+
+we can do this because we made a script in package.json
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },

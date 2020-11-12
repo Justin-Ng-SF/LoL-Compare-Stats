@@ -1,0 +1,74 @@
+git clone | URLHERE
+git branch | Display list of branches
+gitcheckout -b BRANCHNAMEHERE | the slash makes a directory |  git checkout -b justin.ng/hook-up-home-page-to-result-page
+git rm --cached FILENAMEHERE.TYPE | git rm --cached player.js
+
+
+
+client 
+server
+database
+
+--delay between these communicating w each other
+
+//callback does a function later after it is called, similar to what i did on discord bot
+//ie do task 1, 2, 5 then 4, 4 is a callback func
+callback - ie. function(error, result){
+    //dowork
+}
+
+
+/////////////////////
+
+let person = require('person');
+
+console.log('msg')
+
+let jason = person.findone({name: 'jason'}, func(err, res){
+    //dowork
+})
+
+////////////
+
+promise
+
+
+let promise = person.findone({name: ' namehere'}).
+.then((err, res){
+    info here
+})
+.then(())
+
+////////////////////
+
+async
+
+wrap what you want to print out in a promise
+
+
+
+
+
+func window(){
+    console.log('here')
+
+    getlist()
+
+    console.log('here2')
+
+}
+//wrap what you want to retrieve inside of the promise
+func listpromise(){
+    return new promise((resolve, reject){
+        axios.get("url here").then((res){
+            resolve(result)
+        })
+    })
+}
+
+make async func to work w your promise
+await/async must be used together
+async func getlist(){
+    let res = await listpromise();
+
+}

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -14,14 +15,12 @@
 }
 
 .App-header {
-  background-image: url("./resources/background.jpg");
+  /* background-image: url("./resources/background.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
-  width: 100%;
- 
-  top: 0; 
-  left: 0; 
-	
+
+  min-height: 100vh; */
+
   /* Preserve aspet ratio 
   min-width: 100%;
   min-height: 100%;
