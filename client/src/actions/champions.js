@@ -14,7 +14,7 @@ export const getChampions = () => async dispatch => {
         if (currentPatch) {
           championData = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${currentPatch}/data/en_US/champion.json`);
         }
-        else championData = championListURLBACKUP;
+        else championData = await axios.get(championListURLBACKUP);
     
         //data of all champions
         const championInfo = championData.data.data;

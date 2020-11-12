@@ -26,6 +26,7 @@ const Home = ({ getChampions, champions: { champions, loading } }) => {
       });
     }
   }
+
   //if(champions)
   //console.log(Object.keys(champions[1]))
 
@@ -80,5 +81,5 @@ const mapStateToProps = state => ({
 
 
 export default connect(mapStateToProps, { getChampions })(Home)
-
+//getchampions allow class to use getchampions and maps it to /actions/champions.js
 
