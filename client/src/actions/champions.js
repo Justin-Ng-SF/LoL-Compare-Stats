@@ -3,16 +3,21 @@ import {
     GET_CHAMPIONS,
     ERROR
 } from './types';
+import {
+    championListURL1,
+    championListURL2,
+    championListURLBACKUP,
+    patchURL,
 
-const championListURLBACKUP = 'http://ddragon.leagueoflegends.com/cdn/10.22.1/data/en_US/champion.json';
-const patchURL = 'https://ddragon.leagueoflegends.com/api/versions.json';
+} from '../resources/urls';
 
 export const getChampions = () => async dispatch => {
     try {
         const currentPatch = (await axios.get(patchURL))?.data[0];
+        const championListURL = championListURL1 + currentPatch + championListURL2;
         let championData = '';
         if (currentPatch) {
-          championData = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${currentPatch}/data/en_US/champion.json`);
+          championData = await axios.get(championListURL);
         }
         else championData = await axios.get(championListURLBACKUP);
     
