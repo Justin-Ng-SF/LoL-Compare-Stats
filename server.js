@@ -23,6 +23,7 @@ connectDB();
 //app.get('/me', (req, res) => res.send('test'))
 
 app.use('/api/champions', require('./routes/api/champions.js'));
+app.use('/api/player', require('./routes/api/player.js'));
 
 const PORT = process.env.PORT || 5000;
 
