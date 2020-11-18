@@ -4,11 +4,12 @@ const router = express.Router()
 
 var api_key = 'RGAPI-3363731e-06dc-45e7-a524-094b0b91bd26'
 //var name = 'LogicXD'
-var key = '64'
-var matchesLimit = 5
+//var key = '64'
+var matchesLimit = 20
 
-router.get('/:name', async (req, res) => {
+router.get('/:name/:key', async (req, res) => {
     var name = req.params.name
+    var key = req.params.key
     try {
         let sumURL = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + name +
          '?api_key=' + api_key
