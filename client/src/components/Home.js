@@ -33,7 +33,7 @@ const Home = ({ getChampions, champions: { champions, loading } }) => {
 
   // ({ [champion]: championInfo[champion].key})
 
-  function getChampId() {
+  function getChampionAndPlayers() {
     var champId = document.getElementById("mySelect")?.value;
     var player1 = document.getElementById("player1")?.value;
     var player2 = document.getElementById("player2")?.value;
@@ -42,7 +42,7 @@ const Home = ({ getChampions, champions: { champions, loading } }) => {
       player2: player2,
       champId: champId
     })
-    window.location.href="login.php";
+    
     return {
       player1: player1,
       player2: player2,
@@ -69,7 +69,7 @@ const Home = ({ getChampions, champions: { champions, loading } }) => {
         }
       </select>
 
-      <form onSubmit={getChampId} action="results">
+      <form onSubmit={getChampionAndPlayers} action="endpointhere">
         <label>
           Player 1:
           <input type="text" id="player1" />
