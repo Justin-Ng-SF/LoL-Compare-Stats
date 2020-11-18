@@ -5,34 +5,40 @@ const router = express.Router()
 var api_key = 'RGAPI-3363731e-06dc-45e7-a524-094b0b91bd26'
 //var name = 'LogicXD'
 var key = '64'
-var matchesLimit = 20
+var matchesLimit = 5
 
 router.get('/:name', async (req, res) => {
     var name = req.params.name
     try {
         let sumURL = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + name +
-        '?api_key=' + api_key
+         '?api_key=' + api_key
 
         let summoner = await new Promise((resolve, reject) => {
             Axios.get(sumURL).then(res => {
                 resolve(res.data)
             })
         })
-        let matchesURL = 'https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/' + summoner.accountId + '?champion=' + key + '&api_key=' + api_key
+        let matchesURL = 'https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/' + summoner.accountId +
+         '?champion=' + key + '&api_key=' + api_key
+
         let matches = await new Promise((resolve, reject) => {
             Axios.get(matchesURL).then(res => {
                 resolve(res.data)
             })
         })
+        // limit # of matches to get data from
         let matchesLength = matches.endIndex
         if (matchesLength > matchesLimit) {
             matchesLength = matchesLimit
         }
+
+        // get all game id's to use for the URLs
         let gameIds = new Array(matchesLength)
         for (i = 0; i < matchesLength; i++) {
             gameIds[i] = matches.matches[i].gameId
         }
 
+        // array of objects that contains stats from every match
         let matchObjects = []
 
         for (let i = 0; i < matchesLength; i++) {
@@ -42,12 +48,13 @@ router.get('/:name', async (req, res) => {
                     resolve(res.data)
                 })
             })
+            // find the current player id out of the 10 players in each match
             let participants = game.participantIdentities
-
             let currentPlayer = participants.find( ({ player }) => player.summonerName.toLowerCase() == name.toLowerCase() )
             let currentId = currentPlayer.participantId
             
             let playerStats = game.participants[currentId].stats
+            // store each data from a match as an object
             let matchObj = {
                 kills: playerStats.kills,
                 deaths: playerStats.deaths,
@@ -57,10 +64,13 @@ router.get('/:name', async (req, res) => {
                 visionScore: playerStats.visionScore,
                 win: playerStats.win
             }
+            // push every match to the array of match objects
             matchObjects.push(matchObj)
         }
+        // calculate average stats using the array of matches
         let avgMatchStats = getAvgMatchStats(matchObjects)
         console.log(avgMatchStats)
+        // send the average stats
         res.send(avgMatchStats)
     } catch (err) {
         console.error(err.message);
