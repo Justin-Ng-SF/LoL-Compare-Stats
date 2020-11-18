@@ -33,10 +33,21 @@ const Home = ({ getChampions, champions: { champions, loading } }) => {
 
   // ({ [champion]: championInfo[champion].key})
 
-  function getChampId() {
+  function getChampionAndPlayers() {
     var champId = document.getElementById("mySelect")?.value;
-    console.log('champion id: ', champId)
-    return champId
+    var player1 = document.getElementById("player1")?.value;
+    var player2 = document.getElementById("player2")?.value;
+    console.log({
+      player1: player1,
+      player2: player2,
+      champId: champId
+    })
+    
+    return {
+      player1: player1,
+      player2: player2,
+      champId: champId
+    }
   }
 
 
@@ -58,9 +69,23 @@ const Home = ({ getChampions, champions: { champions, loading } }) => {
         }
       </select>
 
-      {<button onClick={getChampId}>
+      <form onSubmit={getChampionAndPlayers} action="endpointhere">
+        <label>
+          Player 1:
+          <input type="text" id="player1" />
+        </label>
+        <br></br>
+        <label>
+          Player 1:
+          <input type="text" id="player2" />
+        </label>
+        <br></br>
+        <input type="submit"/>
+      </form>
+
+      {/* {<button onClick={getChampId}>
         click
-      </button>}
+      </button>} */}
 
 
 
