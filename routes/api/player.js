@@ -5,7 +5,7 @@ const router = express.Router()
 var api_key = 'RGAPI-3363731e-06dc-45e7-a524-094b0b91bd26'
 //var name = 'LogicXD'
 //var key = '64'
-var matchesLimit = 20
+var matchesLimit = 5
 
 router.get('/:name/:key', async (req, res) => {
     var name = req.params.name
