@@ -23,8 +23,8 @@ router.get('/', async (req, res) => {
 
     const listOfChampions = [];
     for (var champion in championInfo) {
-      listOfChampions.push(champion)
-      //listOfChampions.push({ [champion]: championInfo[champion].key});
+      //listOfChampions.push(champion)
+      listOfChampions.push({ [champion]: championInfo[champion].key});
     }
 
     console.log(typeof listOfChampions)

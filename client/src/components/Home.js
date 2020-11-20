@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 //import axios from 'axios';
 import { getChampions } from '../actions/champions';
+import { getPlayer } from '../actions/player';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import './dropdown.css';
-
 
 
 const Home = ({ getChampions, champions: { champions, loading } }) => {
@@ -33,6 +32,8 @@ const Home = ({ getChampions, champions: { champions, loading } }) => {
 
   // ({ [champion]: championInfo[champion].key})
 
+
+
   function getChampionAndPlayers() {
     var champId = document.getElementById("mySelect")?.value;
     var player1 = document.getElementById("player1")?.value;
@@ -43,14 +44,8 @@ const Home = ({ getChampions, champions: { champions, loading } }) => {
       champId: champId
     })
     
-    return {
-      player1: player1,
-      player2: player2,
-      champId: champId
-    }
+    return window.location.href=`/results/${player1}/${player2}/${champId}`;
   }
-
-
   return (
 
     <div>
@@ -69,19 +64,29 @@ const Home = ({ getChampions, champions: { champions, loading } }) => {
         }
       </select>
 
-      <form onSubmit={getChampionAndPlayers} action="endpointhere">
+
+
+
+
+
+      
+      <form>
+        
+
         <label>
-          Player 1:
-          <input type="text" id="player1" />
+          <input type="text" id="player1" placeholder="Player 1"/>
         </label>
         <br></br>
         <label>
-          Player 1:
-          <input type="text" id="player2" />
+          <input type="text" id="player2" placeholder="Player 2"/>
         </label>
         <br></br>
-        <input type="submit"/>
+
+
       </form>
+
+      <button onClick={getChampionAndPlayers}>test</button>
+      
 
       {/* {<button onClick={getChampId}>
         click
