@@ -7,7 +7,7 @@ import {
 export const getPlayer = (username, championID) => async dispatch => {
     try {
         const dataInfo = await axios.get(`/api/player/${username}/${championID}`);
-        console.log(dataInfo)
+        // /console.log(dataInfo)
 
         dispatch({
             type: GET_PLAYER,

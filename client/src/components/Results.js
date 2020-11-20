@@ -9,7 +9,7 @@ const Results = ({ getPlayer, playerInfo, match }) => {
   useEffect(() => {
       getPlayer(match.params.player1, match.params.championid);
   });
-
+console.log(1, playerInfo)
   return (
 
     <div>

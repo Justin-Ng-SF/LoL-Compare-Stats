@@ -10,7 +10,7 @@ const Home = ({ getChampions, champions: { champions, loading } }) => {
   useEffect(() => {
     //getPost(match.params.id);
     getChampions();
-  }, [getChampions]);
+  });
 
   var champlist = [];
   if (champions.length > 0) {
