@@ -4,7 +4,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    player: [],
+    playerInfo: [],
     loading: true,
     error: {}
 };
@@ -16,7 +16,7 @@ export default function playerReducer(state = initialState, action) {
         case GET_PLAYER:
             return {
                 ...state,
-                player: payload,
+                playerInfo: payload,
                 loading: false
             }
             case ERROR:
