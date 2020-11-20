@@ -4,7 +4,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    playerInfo: [],
+    playerInfo: ['hi'],
     loading: true,
     error: {}
 };

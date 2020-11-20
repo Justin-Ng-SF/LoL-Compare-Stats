@@ -5,15 +5,15 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 
 
-const Results = ({ getPlayer }) => {
+const Results = ({ getPlayer, playerInfo, match }) => {
   useEffect(() => {
-    getPlayer('logicxd', 64);
-  }, [getPlayer]);
+      getPlayer(match.params.player1, match.params.championid);
+  });
 
   return (
 
     <div>
-        {}
+        test
 
 
 
