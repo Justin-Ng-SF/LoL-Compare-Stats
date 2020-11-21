@@ -13,7 +13,7 @@ function App() {
       <header className="App-header">
         <Router>
             <Route exact path="/" component={Home} />
-            <Route exact path="/results" component={Results} />
+            <Route exact path="/results/:player1/:player2/:championid" component={Results} />
         </Router>
 
 
